@@ -21,6 +21,45 @@ These instructions are only for Debian/Ubuntu based systems.
 $ apt install gcc make git unzip wget xz-utils libsdl2-dev libsdl2-mixer-dev libfreeimage-dev libfreetype6-dev libcurl4-openssl-dev rapidjson-dev libasound2-dev libgl1-mesa-dev build-essential libboost-all-dev cmake fonts-droid-fallback libvlc-dev libvlccore-dev vlc-bin texinfo premake4 golang libssl-dev curl patchelf xmlstarlet default-jre xsltproc libvpx-dev
 ```
 
+### EmuELEC Build Environment from Docker Compose
+```
+EmuELEC git:(dev) ✗ docker-compose up                                  
+[+] Running 1/0
+ ✔ Container emuelec-emuelec-builder-1  Created                                                                                               0.0s 
+Attaching to emuelec-builder-1
+``` 
+
+Access into the container from another terminal
+
+```
+EmuELEC git:(dev) ✗ docker exec -it emuelec-emuelec-builder-1 /bin/bash
+emuelec@446d8db825cd:/mnt/emuelec$
+```  
+
+### Build from the container
+```
+EmuELEC git:(dev) ✗ docker exec -it emuelec-emuelec-builder-1 /bin/bash
+emuelec@446d8db825cd:/mnt/emuelec$ PROJECT=Amlogic-ce DEVICE=Amlogic-ng ARCH=aarch64 DISTRO=EmuELEC make image
+./scripts/image mkimage
+**** This system lacks the following tools needed to build  ****
+file provided by file
+mkfontdir provided by xfonts-utils
+perl::JSON provided by libjson-perl
+mkfontscale provided by xfonts-utils
+perl::Parse::Yapp::Driver provided by libparse-yapp-perl
+gperf provided by gperf
+gawk provided by gawk
+zstd provided by zstd
+bdftopcf provided by xfonts-utils
+perl::XML::Parser provided by libxml-parser-perl
+zip provided by zip
+lsdiff provided by patchutils
+bc provided by bc
+lzop provided by lzop
+**** The system appears to be a ubuntu system ****
+Would you like to install the needed tools? (y/n)
+```  
+
 ### Building EmuELEC
 To build EmuELEC locally do the following:
 

@@ -1,0 +1,7 @@
+services:
+  emuelec-builder:
+    build: .
+    tty: true
+    volumes:
+      - ./:/mnt/emuelec
+  
